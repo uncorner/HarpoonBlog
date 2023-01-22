@@ -1,0 +1,70 @@
+﻿@using Harpoon.Core.Entities.Projections
+@model Harpoon.Application.Backend.ViewModels.ArticleGridForm
+
+@helper ArticleRowClass(ArticleInfo article)
+{
+    if (! article.IsPublished)
+    {
+        @string.Format("unpublished")
+    }
+}
+
+@helper PublishedFlag(ArticleInfo article)
+{
+    if (article.IsPublished)
+    {
+        @Html.Raw("&#10004;")
+    }
+    else
+    {
+        @("черновик")
+    }
+}
+
+@helper RenderDeletionLink(ArticleInfo article)
+{
+    var onClickCode = string.Format(@"return confirm('Удалить заметку ""{0}""?');", article.Title);
+    @Html.ActionLink("удалить", "Delete", "Article", 
+        new { id = article.Id },
+        new { onclick = onClickCode })
+}
+
+<table class="tuned-table post-grid">
+    <thead>
+        <tr>
+            <th>
+                Название заметки
+            </th>
+            <th>
+                Дата создания
+            </th>
+            <th>
+                <div>Опублико</div>
+                <div>вана</div>
+            </th>
+            <th>
+                Действие
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var article in Model.Articles)
+        {
+        <tr class="@ArticleRowClass(article)" >
+            <td class="title">@article.Title</td>
+            <td>@Html.NumericDateOnly(article.CreatedAt)</td>
+            <td>@PublishedFlag(article)</td>
+            <td>
+                <div class="grid-edit-action">
+                    <nobr>@Html.ActionLink("редакт-ть", "EditArticle", new { id = article.Id })</nobr>
+                </div>
+                <div>
+                    @RenderDeletionLink(article)
+                </div>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@Html.ExtPager(Model, "post-grid-container")

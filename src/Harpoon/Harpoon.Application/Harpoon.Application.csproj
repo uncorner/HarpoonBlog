@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7DEF82A6-1B56-4302-B427-16115B8FB316}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Harpoon.Application</RootNamespace>
+    <AssemblyName>Harpoon.Application</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CodeKicker.BBCode, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\libs\CodeKicker.BBCode\CodeKicker.BBCode.dll</HintPath>
+    </Reference>
+    <Reference Include="DataAnnotationsExtensions">
+      <HintPath>..\packages\DataAnnotationsExtensions.1.1.0.0\lib\NETFramework40\DataAnnotationsExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="DataAnnotationsExtensions.ClientValidation">
+      <HintPath>..\packages\DataAnnotationsExtensions.MVC3.1.1.0.0\lib\NETFramework40\DataAnnotationsExtensions.ClientValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net">
+      <HintPath>..\packages\Lucene.Net.3.0.3\lib\NET40\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Contrib.Analyzers">
+      <HintPath>..\packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.Analyzers.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Contrib.Core">
+      <HintPath>..\packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Contrib.FastVectorHighlighter">
+      <HintPath>..\packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.FastVectorHighlighter.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Contrib.Highlighter">
+      <HintPath>..\packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.Highlighter.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Contrib.Memory">
+      <HintPath>..\packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Contrib.Queries">
+      <HintPath>..\packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.Queries.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Contrib.Regex">
+      <HintPath>..\packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.Regex.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Contrib.SimpleFacetedSearch">
+      <HintPath>..\packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.SimpleFacetedSearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Contrib.Snowball">
+      <HintPath>..\packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.Snowball.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Contrib.SpellChecker">
+      <HintPath>..\packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.SpellChecker.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcPaging">
+      <HintPath>..\packages\MvcPaging.2.0.3\lib\net40\MvcPaging.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.2.1.0\lib\net40\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.2.0.0\lib\NETFramework40\WebActivator.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionParameterNullException.cs" />
+    <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
+    <Compile Include="Attributes\BackendAuthorizeAttribute.cs" />
+    <Compile Include="Attributes\EmptyFilterAttribute.cs" />
+    <Compile Include="Attributes\HttpsAttributeFactory.cs" />
+    <Compile Include="Attributes\HttpsSwitcherAttribute.cs" />
+    <Compile Include="Backend\Authentication\AuthHelper.cs" />
+    <Compile Include="Backend\Authentication\FormAuthProvider.cs" />
+    <Compile Include="Backend\Authentication\IAuthProvider.cs" />
+    <Compile Include="Backend\Controllers\ArticleController.cs" />
+    <Compile Include="Backend\Controllers\AuthController.cs" />
+    <Compile Include="Backend\Controllers\ChapterController.cs" />
+    <Compile Include="Backend\Controllers\ProfileController.cs" />
+    <Compile Include="Backend\Controllers\TagController.cs" />
+    <Compile Include="Backend\ViewHelpers\BackendMenuHelper.cs" />
+    <Compile Include="Backend\ViewHelpers\BackendPageTitleHelper.cs" />
+    <Compile Include="Backend\ViewModels\ArticleGridForm.cs" />
+    <Compile Include="Backend\ViewModels\ChangePasswordForm.cs" />
+    <Compile Include="Backend\ViewModels\CommentForm.cs" />
+    <Compile Include="Backend\ViewModels\EditArticleForm.cs" />
+    <Compile Include="Backend\ViewModels\EditChapterForm.cs" />
+    <Compile Include="Backend\ViewModels\EditProfileForm.cs" />
+    <Compile Include="Backend\ViewModels\LogonForm.cs" />
+    <Compile Include="Backend\ViewModels\NewArticleForm.cs" />
+    <Compile Include="Backend\ViewModels\NewChapterForm.cs" />
+    <Compile Include="Caching\CacheBroker.cs" />
+    <Compile Include="CaptchaBuilder.cs" />
+    <Compile Include="ContainerConfigurator.cs" />
+    <Compile Include="ContentNotFoundException.cs" />
+    <Compile Include="ControllerBase.cs" />
+    <Compile Include="ErrorHandlers\ErrorHandler.cs" />
+    <Compile Include="ErrorHandlers\ErrorHandlerFactory.cs" />
+    <Compile Include="ErrorHandlers\IErrorContext.cs" />
+    <Compile Include="ErrorHandlers\IErrorHandler.cs" />
+    <Compile Include="ErrorHandlers\NullErrorHandler.cs" />
+    <Compile Include="Frontend\Controllers\ArticleController.cs" />
+    <Compile Include="Frontend\Controllers\CaptchaController.cs" />
+    <Compile Include="Frontend\Controllers\ChapterController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Frontend\Controllers\ImageController.cs" />
+    <Compile Include="Frontend\Controllers\SearchController.cs" />
+    <Compile Include="Frontend\Controllers\SectionController.cs" />
+    <Compile Include="Frontend\Controllers\TagController.cs" />
+    <Compile Include="Frontend\ViewHelpers\ArticleMenuHelper.cs" />
+    <Compile Include="Frontend\ViewHelpers\ChapterMenuHelper.cs" />
+    <Compile Include="Frontend\ViewHelpers\FooterTextHelper.cs" />
+    <Compile Include="Frontend\ViewHelpers\FrontendPageTitleHelper.cs" />
+    <Compile Include="Frontend\ViewHelpers\TagMenuHelper.cs" />
+    <Compile Include="Frontend\ViewModels\ArticleForm.cs" />
+    <Compile Include="Frontend\ViewModels\ArticleListForm.cs" />
+    <Compile Include="Frontend\ViewModels\SearchForm.cs" />
+    <Compile Include="Frontend\ViewModels\FoundArticle.cs" />
+    <Compile Include="HtmlCleaner.cs" />
+    <Compile Include="Searching\ISearchEngine.cs" />
+    <Compile Include="Searching\SearchEngine.cs" />
+    <Compile Include="ViewModels\RssActionResult.cs" />
+    <Compile Include="Frontend\ViewModels\TaggedArticleListForm.cs" />
+    <Compile Include="CommentContentParser.cs" />
+    <Compile Include="Caching\ICacheBroker.cs" />
+    <Compile Include="Notification\CommentMailSender.cs" />
+    <Compile Include="Notification\ICommentNotificationSender.cs" />
+    <Compile Include="Notification\IErrorNotificationSender.cs" />
+    <Compile Include="Mail\MailConfig.cs" />
+    <Compile Include="Mail\MailConfigSection.cs" />
+    <Compile Include="Mail\SmtpMailer.cs" />
+    <Compile Include="Notification\ErrorMailSender.cs" />
+    <Compile Include="Notification\SmtpMailerConfigurator.cs" />
+    <Compile Include="PreviewProcessor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RouteConfigurator.cs" />
+    <Compile Include="TagLineConverter.cs" />
+    <Compile Include="UnityDependencyResolver.cs" />
+    <Compile Include="ViewHelpers\CommentHelper.cs" />
+    <Compile Include="ViewHelpers\DateHelpers.cs" />
+    <Compile Include="ViewHelpers\ExtLabelForHelper.cs" />
+    <Compile Include="ViewHelpers\ExtPagerHelper.cs" />
+    <Compile Include="ViewHelpers\ExtValidationSummaryHelper.cs" />
+    <Compile Include="ViewHelpers\FlashMessageHelper.cs" />
+    <Compile Include="ViewHelpers\HelperCommon.cs" />
+    <Compile Include="ViewHelpers\Rendering\CommentRendererBase.cs" />
+    <Compile Include="ViewHelpers\Rendering\MasterCommentRenderer.cs" />
+    <Compile Include="ViewHelpers\Rendering\ListMenuRenderer.cs" />
+    <Compile Include="ViewHelpers\Rendering\GuestComentRenderer.cs" />
+    <Compile Include="ViewHelpers\Rendering\MenuRenderer.cs" />
+    <Compile Include="ViewHelpers\Rendering\SideMenuRenderer.cs" />
+    <Compile Include="ViewHelpers\PageTitleHelper.cs" />
+    <Compile Include="ViewHelpers\VisibleClassHelper.cs" />
+    <Compile Include="ViewModels\CommentFormBase.cs" />
+    <Compile Include="ViewModels\CommentModel.cs" />
+    <Compile Include="ViewModels\ICommentListModel.cs" />
+    <Compile Include="ViewModels\IPagingModel.cs" />
+    <Compile Include="ViewModels\Navigation\Menu.cs" />
+    <Compile Include="ViewModels\Navigation\MenuFooterLink.cs" />
+    <Compile Include="ViewModels\Navigation\MenuItem.cs" />
+    <Compile Include="ViewModels\Navigation\MenuRoute.cs" />
+    <Compile Include="ViewModels\Navigation\SideMenu.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Harpoon.Core\Harpoon.Core.csproj">
+      <Project>{E1D2A74B-F1EB-4401-9E35-798B6D2EE61B}</Project>
+      <Name>Harpoon.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Harpoon.Infrastructure\Harpoon.Infrastructure.csproj">
+      <Project>{5F55AA43-9FB8-4A4A-9E5E-69CB42F4A606}</Project>
+      <Name>Harpoon.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

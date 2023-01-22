@@ -1,0 +1,25 @@
+﻿@model Harpoon.Application.Frontend.ViewModels.SearchForm
+
+@{
+    ViewBag.Title = "Результаты поиска";
+}
+
+@if (Model.HasArticles)
+{
+    <div class="article-list-caption">
+        Результаты поиска для фразы «<span>@Model.QueryString</span>»:
+    </div>
+    
+    <div id="article-list-container">
+        @foreach (var article in Model.Articles)
+        {
+            @Html.Partial("FoundArticle", article)
+        }
+    </div>
+}
+else
+{
+    <div class="article-list-caption">
+        По запросу «<span>@Model.QueryString</span>» ничего не найдено
+    </div>
+}

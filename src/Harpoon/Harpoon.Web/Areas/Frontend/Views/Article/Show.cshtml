@@ -1,0 +1,126 @@
+﻿@model Harpoon.Application.Frontend.ViewModels.ArticleForm
+@{
+    ViewBag.Title = Model.Article.Title;
+}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.textarea-expander.js")" type="text/javascript"></script>
+
+@helper CaptchaImageUrl()
+{
+    @Url.Action("CaptchaImage", "Captcha", new { prefix = "_comment_form" });
+}
+
+<div class="article-header">
+    <h1 class="article-title">
+        @Model.Article.Title
+    </h1>
+
+    @if (Model.Article.PublishedAt.HasValue)
+    {
+        <div class="article-date middle-gray-color">
+            @Html.DateTimeHm(Model.Article.PublishedAt.Value)
+        </div>
+    }
+</div>
+
+<div class="article-content">
+    @Html.Raw(@Model.Article.Content.Data)
+</div>
+
+@if (Model.Article.HasTags())
+{
+    <div id="tag-box">
+    @foreach (var tag in @Model.Article.Tags)
+    {
+        @Html.ActionLink(tag.Name, "ShowTaggedList", "Article", new { key = tag.Id }, null)
+    }
+    </div>
+}
+
+<div id="comment-with-form-box">
+    @Html.Partial("CommentList", Model)
+
+    <div id="comment-form-box" class="form-box">
+        <div class="comment-form-header">
+            <span id="comment-form-caption">Ваш комментарий</span>
+            <span class="comment-markup-link">
+                <a href="#" onclick="harpoon.slideCommentMarkup(); return false;">Разметка</a>
+            </span>
+        </div>
+
+        @Html.Partial("CommentMarkup")
+        
+        @using (Ajax.BeginForm("Show", "Article", new { key = Model.ArticleId },
+            new AjaxOptions
+            {
+                HttpMethod = "post",
+                OnSuccess = "harpoon.onSuccessCommentForm",
+                OnFailure = "harpoon.onFailureCommentForm",
+                OnBegin = "harpoon.onBeginCommentForm",
+                LoadingElementId = "comment-progress"
+            }))
+        {
+            @Html.AntiForgeryToken()
+            
+            <div class="comment-form-error-box"></div>
+            
+            <div class="form-row">
+                <div class="editor-label">
+                    @Html.ExtLabelFor(model => model.CommentName)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.CommentName)
+                    @Html.ValidationMessageFor(model => model.CommentName)
+                </div>
+            </div>       
+        
+            <div class="form-row">
+                <div class="editor-label">
+                    <label for="Email">Эл. почта <span class="label-description">(укажите, чтобы получать уведомления о других комментариях)</span></label>
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Email)
+                    @Html.ValidationMessageFor(model => model.Email)
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="editor-label">
+                    @Html.ExtLabelFor(model => model.CommentContent)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.CommentContent)
+                    @Html.ValidationMessageFor(model => model.CommentContent)
+                </div>
+            </div>
+    
+            <div class="form-row captcha-box">
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Captcha)
+                    
+                </div>
+                <div class="editor-field">
+                    <div class="captcha-input-box"> 
+                        <div class="captcha-input-subbox" >
+                            @Html.EditorFor(model => model.Captcha)
+                        </div>
+                        <div class="captcha-subbox" >
+                            <a href="#" onclick="harpoon.updateCaptchaImage(); return false;">
+                                <img data-normal-url="@CaptchaImageUrl()" src="@CaptchaImageUrl()" alt="Captcha" />
+                            </a>
+                        </div>
+                    </div>
+
+                    @Html.ValidationMessageFor(model => model.Captcha)
+                </div>
+            </div>
+            
+            @Html.Partial("CommentFormSubmitBlock")
+        }
+    </div>
+
+</div>
+

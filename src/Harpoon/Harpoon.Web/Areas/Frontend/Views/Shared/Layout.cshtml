@@ -1,0 +1,68 @@
+﻿@using StackExchange.Profiling;
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="shortcut icon" href="@Url.Content("~/Content/images/favicon.ico")" />
+    <link href="@Url.Content("~/Content/core.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/harpoon.less")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/harpoon-common.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/harpoon.js")" type="text/javascript"></script>
+    @Html.Partial("LayoutCustomHead")
+    <link href="@Url.Content("~/Content/custom.css")" rel="stylesheet" type="text/css" />
+    <title>@Html.FrontendPageTitle()</title>
+</head>
+<body>
+    <div id="layout">
+        <div id="layout-header">
+            @Html.Action("ShowLayoutHeader", "Section")
+        </div>
+        <div id="layout-middle">
+            <table class="tuned-table" id="layout-middle-box">
+                <tr>
+                    <td id="layout-topbar">
+                        @Html.ChapterMenu()
+                    </td>
+                    <td id="layout-search">
+                        <form action="">
+                            <table class="tuned-table">
+                                <tr>
+                                    <td>
+                                        <input type="text" name="search-text" placeholder="искать" onkeypress="return harpoon.searchByEnter(event);" />
+                                    </td>
+                                    <td id="search-button-box">
+                                        <a href="#" onclick="harpoon.search();"></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="layout-content">
+                        <div id="content-box">
+                            @RenderBody()
+                        </div>
+                    </td>
+                    <td id="layout-sidebar">
+                        @Html.Partial("SidebarBeforeCustomPane")
+                        @Html.ArticleMenu()
+                        @Html.TagMenu()
+                        @Html.Partial("SidebarAfterCustomPane")
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="layout-footer">
+            @Html.FooterText()
+        </div>
+        @Html.Partial("Powered")
+    </div>
+
+    @Html.Partial("LayoutCustomAfter")
+    <!-- profiler scope -->
+    @MiniProfiler.RenderIncludes()
+</body>
+</html>

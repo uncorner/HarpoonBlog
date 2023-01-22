@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Страница не найдена";
+    Layout = "~/Views/Shared/ErrorLayout.cshtml";
+}
+
+<div id="error-box" class="rounded-border">
+    <table class="tuned-table">
+        <tr>
+            <td id="error-box-image">
+                <img alt="404" src="@Url.Content("~/Content/images/404.png")" />
+            </td>
+            <td id="error-box-message">
+                Запрошенная страница или ресурс не был найден:
+                <br />
+                <span id="error-box-message-url">@ViewBag.Url</span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td id="error-box-backlink">
+                @Html.RouteLink("Перейти на главную", "Root") 
+            </td>
+        </tr>
+    </table>
+</div>

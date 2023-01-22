@@ -1,0 +1,34 @@
+﻿@model Harpoon.Application.Backend.ViewModels.ArticleGridForm
+@{
+    ViewBag.Title = "Заметки";
+}
+
+@helper RenderCreateArticleLink(string text)
+{
+    @Html.ActionLink(text, "NewArticle", "Article")
+}
+
+<div id="post-grid-page">
+    <div class="page-title">@ViewBag.Title</div>
+
+    @Html.FlashMessage()
+
+    <div>
+    @if (Model.HasArticles)
+    {
+        <div id="create-post-link-box">
+            @RenderCreateArticleLink("Создать заметку")
+        </div>
+
+        <div id="post-grid-container">
+            @Html.Partial("ArticleGrid", Model)
+        </div>
+    }
+    else
+    {
+        <div>
+            У вас ещё нет заметок. Начните с того, чтобы @RenderCreateArticleLink("создать первую заметку")
+        </div>
+    }
+    </div>
+</div>

@@ -1,0 +1,143 @@
+﻿@using Harpoon.Application.Backend.ViewModels
+@model Harpoon.Application.Backend.ViewModels.NewArticleForm
+           
+@{
+    ViewBag.Title = Model.GetFormTitle();
+}
+
+<link href="@Url.Content("~/Content/jquery.tagit.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/tagit.ui-zendesk.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/tag-it.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/ckeditor/ckeditor.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        harpoon.initTagLine();
+    });
+</script>
+
+@helper RenderDateRow() {
+    var editForm = Model as EditArticleForm;
+    
+    if (editForm != null)
+    {
+        <div class="form-row">
+            <table class="tuned-table date-box">
+            @if (editForm.PublishedAt.HasValue)
+            {
+                <tr>
+                    @Html.Hidden("PublishedAt", editForm.PublishedAt)
+                    <td class="field-name">Опубликована:</td>
+                    <td>@Html.DateTimeHm(editForm.PublishedAt.Value)</td>
+                </tr>
+            }
+
+            <tr>
+                @Html.Hidden("CreatedAt", editForm.CreatedAt)
+                <td class="field-name">Создана:</td>
+                <td>@Html.DateTimeHm(editForm.CreatedAt)</td>
+            </tr>
+        
+            @if (editForm.UpdatedAt.HasValue)
+            {
+                <tr>
+                    @Html.Hidden("UpdatedAt", editForm.UpdatedAt)
+                    <td class="field-name"><span>Обновлена: </span></td>
+                    <td>@Html.DateTimeHm(editForm.UpdatedAt.Value)</td>
+                </tr>
+            }
+            </table>
+        </div>
+    }
+}
+
+@helper RenderCommentLink()
+{
+    var editForm = Model as EditArticleForm;
+    
+    if (editForm != null)
+    {
+        <div class="form-row">
+
+        @if (editForm.HasComments) {
+            var title = string.Format("Комментарии к заметке ({0})", editForm.CommentCount);
+            @Html.ActionLink(title, "AddComment", new { id = editForm.Id }, new { target = "_blank" })
+        }
+        else
+        {
+            <span class="info-line">
+            @("Нет комментариев к заметке")
+            </span>            
+        }
+        </div>
+    }
+}
+
+<div class="form-box process-article-form">
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>@ViewBag.Title</legend>
+
+        @Html.ExtValidationSummary()
+        @Html.FlashMessage()
+        
+        @RenderDateRow()
+
+        <div class="form-row">
+            <div class="editor-label">
+                @Html.ExtLabelFor(model => model.Title)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Title)
+                @Html.ValidationMessageFor(model => model.Title)
+            </div>
+        </div>
+
+        <div class="form-row inline-row">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.IsPublished)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.IsPublished)
+                @Html.ValidationMessageFor(model => model.IsPublished)
+            </div>
+        </div>
+
+        <div class="form-row tag-line-row">
+            <div class="editor-label">
+                @Html.ExtLabelFor(model => model.TagLine)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.TagLine)
+                @Html.ValidationMessageFor(model => model.TagLine)
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="editor-label">
+                @Html.ExtLabelFor(model => model.Content, true)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Content)
+                @Html.ValidationMessageFor(model => model.Content)
+            </div>
+        </div>
+
+        @RenderCommentLink()
+
+        <div class="submit-button">
+            <input type="submit" value="@Model.GetSubmitText()" />
+        </div>
+    </fieldset>
+}
+
+</div>
+
+<script type="text/javascript">
+    CKEDITOR.replace(
+        'Content',
+        { filebrowserImageUploadUrl: '/Image/Upload' }
+    );
+</script>

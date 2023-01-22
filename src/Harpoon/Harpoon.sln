@@ -1,0 +1,78 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C5F4A909-D9CE-4918-8E74-7B5301674AEA}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\nuget.exe = .nuget\nuget.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harpoon.Web", "Harpoon.Web\Harpoon.Web.csproj", "{2927F214-E110-41FA-AC6F-DC2497D32952}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harpoon.Core", "Harpoon.Core\Harpoon.Core.csproj", "{E1D2A74B-F1EB-4401-9E35-798B6D2EE61B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harpoon.Infrastructure", "Harpoon.Infrastructure\Harpoon.Infrastructure.csproj", "{5F55AA43-9FB8-4A4A-9E5E-69CB42F4A606}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harpoon.Infrastructure.Tests", "Harpoon.Infrastructure.Tests\Harpoon.Infrastructure.Tests.csproj", "{50FD98BD-B615-4F42-BBD6-812E60D45FF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harpoon.Core.Tests", "Harpoon.Core.Tests\Harpoon.Core.Tests.csproj", "{F86E961A-A58B-4E5A-9CA4-1FE2C0A86D49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transliteration", "Transliteration\Transliteration.csproj", "{515E037D-B4C7-437C-AF43-08E5ACEA883D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harpoon.Application", "Harpoon.Application\Harpoon.Application.csproj", "{7DEF82A6-1B56-4302-B427-16115B8FB316}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harpoon.Application.Tests", "Harpoon.Application.Tests\Harpoon.Application.Tests.csproj", "{EA3591DE-1F13-4440-A4A8-D9C93AE0D808}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harpoon.Migrations", "Harpoon.Migrations\Harpoon.Migrations.csproj", "{9ABA12D4-8856-4F57-8E2D-679296CF9E70}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2927F214-E110-41FA-AC6F-DC2497D32952}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2927F214-E110-41FA-AC6F-DC2497D32952}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2927F214-E110-41FA-AC6F-DC2497D32952}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2927F214-E110-41FA-AC6F-DC2497D32952}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1D2A74B-F1EB-4401-9E35-798B6D2EE61B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1D2A74B-F1EB-4401-9E35-798B6D2EE61B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1D2A74B-F1EB-4401-9E35-798B6D2EE61B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1D2A74B-F1EB-4401-9E35-798B6D2EE61B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F55AA43-9FB8-4A4A-9E5E-69CB42F4A606}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F55AA43-9FB8-4A4A-9E5E-69CB42F4A606}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F55AA43-9FB8-4A4A-9E5E-69CB42F4A606}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F55AA43-9FB8-4A4A-9E5E-69CB42F4A606}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50FD98BD-B615-4F42-BBD6-812E60D45FF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50FD98BD-B615-4F42-BBD6-812E60D45FF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50FD98BD-B615-4F42-BBD6-812E60D45FF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50FD98BD-B615-4F42-BBD6-812E60D45FF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F86E961A-A58B-4E5A-9CA4-1FE2C0A86D49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F86E961A-A58B-4E5A-9CA4-1FE2C0A86D49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F86E961A-A58B-4E5A-9CA4-1FE2C0A86D49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F86E961A-A58B-4E5A-9CA4-1FE2C0A86D49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{515E037D-B4C7-437C-AF43-08E5ACEA883D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{515E037D-B4C7-437C-AF43-08E5ACEA883D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{515E037D-B4C7-437C-AF43-08E5ACEA883D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{515E037D-B4C7-437C-AF43-08E5ACEA883D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DEF82A6-1B56-4302-B427-16115B8FB316}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DEF82A6-1B56-4302-B427-16115B8FB316}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DEF82A6-1B56-4302-B427-16115B8FB316}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DEF82A6-1B56-4302-B427-16115B8FB316}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA3591DE-1F13-4440-A4A8-D9C93AE0D808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA3591DE-1F13-4440-A4A8-D9C93AE0D808}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA3591DE-1F13-4440-A4A8-D9C93AE0D808}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA3591DE-1F13-4440-A4A8-D9C93AE0D808}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ABA12D4-8856-4F57-8E2D-679296CF9E70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ABA12D4-8856-4F57-8E2D-679296CF9E70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ABA12D4-8856-4F57-8E2D-679296CF9E70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ABA12D4-8856-4F57-8E2D-679296CF9E70}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35
+	EndGlobalSection
+EndGlobal

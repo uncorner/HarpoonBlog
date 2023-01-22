@@ -1,0 +1,100 @@
+﻿@using Harpoon.Core.Entities.Projections
+@model IEnumerable<Harpoon.Core.Entities.Projections.ChapterInfo>
+@{
+    ViewBag.Title = "Разделы";
+}
+
+@helper RenderCreateChapterLink(string text)
+{
+    @Html.ActionLink(text, "NewChapter", "Chapter")
+}
+
+@helper ArticleRowClass(ChapterInfo chapter)
+{
+    if (! chapter.IsPublished)
+    {
+        @string.Format("unpublished")
+    }
+}
+
+@helper PublishedFlag(ChapterInfo chapter)
+{
+    if (chapter.IsPublished)
+    {
+        @Html.Raw("&#10004;")
+    }
+}
+
+@helper RenderDeletionLink(ChapterInfo chapter)
+{
+    var onClickCode = string.Format(@"return confirm('Удалить раздел ""{0}""?');", chapter.Title);
+    @Html.ActionLink("удалить", "Delete", "Chapter", 
+        new { id = chapter.Id },
+        new { onclick = onClickCode })
+}
+
+@helper GenerateItemId(ChapterInfo chapter)
+{
+    @("post-grid-row-" + chapter.Id)
+}
+
+<div id="post-grid-page">
+    <div class="page-title">@ViewBag.Title</div>
+
+    @Html.FlashMessage()
+
+    <div>
+    @if (Model.Count() > 0)
+    {
+        <div id="create-post-link-box">
+            @RenderCreateChapterLink("Создать раздел")
+        </div>
+        <div class="chapter-grid-info">
+            Чтобы изменить порядок следования разделов просто перемещайте их между собой  
+        </div>
+        
+        <div id="post-grid-container">
+
+            <table class="tuned-table post-grid chapter-grid">
+                <thead>
+                    <tr>
+                        <th>
+                            Название раздела
+                        </th>
+                        <th>
+                            Опубликован
+                        </th>
+                        <th>
+                            Действие
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var chapter in Model)
+                    {
+                    <tr id="@GenerateItemId(chapter)" class="@ArticleRowClass(chapter)" >
+                        <td class="title">@chapter.Title</td>
+                        <td>@PublishedFlag(chapter)</td>
+                        <td>
+                            <div class="grid-edit-action">
+                                @Html.ActionLink("редакт-ть", "EditChapter", new { id = chapter.Id })
+                            </div>
+                            <div>
+                                @RenderDeletionLink(chapter)
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    }
+    else
+    {
+        <div>
+            У вас ещё нет разделов. Начните с того, чтобы @RenderCreateChapterLink("создать первый раздел")
+        </div>
+    }
+    </div>
+</div>

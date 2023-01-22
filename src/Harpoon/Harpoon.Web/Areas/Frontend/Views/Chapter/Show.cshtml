@@ -1,0 +1,8 @@
+﻿@model Harpoon.Core.Entities.Chapter
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<div id="chapter-content">
+    @Html.Raw(@Model.Content.Data)
+</div>

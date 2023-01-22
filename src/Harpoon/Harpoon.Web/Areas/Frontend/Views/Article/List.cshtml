@@ -1,0 +1,20 @@
+﻿@using Harpoon.Application.Frontend.ViewModels
+@model Harpoon.Application.Frontend.ViewModels.ArticleListForm
+@{
+    ViewBag.Title = "Заметки";
+}
+
+<div id="article-list-container" data-total-count="@Model.TotalCount">
+
+    @Html.Partial("PreviewArticleList", Model.Articles)
+
+</div>
+
+@if (Model.CanLoadMore)
+{
+    <div id="article-loading-link-box">
+        <a href="#" onclick="harpoon.loadMoreArticles(); return false;">Показать ещё заметки</a>
+    </div>
+}
+
+

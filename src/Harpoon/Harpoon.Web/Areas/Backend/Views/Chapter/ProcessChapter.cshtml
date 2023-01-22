@@ -1,0 +1,110 @@
+﻿@using Harpoon.Application.Backend.ViewModels
+@model Harpoon.Application.Backend.ViewModels.NewChapterForm
+
+@{
+    ViewBag.Title = Model.GetFormTitle();
+}
+
+@helper RenderDateRow() {
+   var editForm = Model as EditChapterForm;
+    
+    if (editForm != null)
+    {
+        <div class="form-row">
+            <table class="tuned-table date-box">
+            @if (editForm.PublishedAt.HasValue)
+            {
+                <tr>
+                    @Html.Hidden("PublishedAt", editForm.PublishedAt)
+                    <td class="field-name">Опубликована:</td>
+                    <td>@Html.DateTimeHm(editForm.PublishedAt.Value)</td>
+                </tr>
+            }
+
+            <tr>
+                @Html.Hidden("CreatedAt", editForm.CreatedAt)
+                <td class="field-name">Создана:</td>
+                <td>@Html.DateTimeHm(editForm.CreatedAt)</td>
+            </tr>
+        
+            @if (editForm.UpdatedAt.HasValue)
+            {
+                <tr>
+                    @Html.Hidden("UpdatedAt", editForm.UpdatedAt)
+                    <td class="field-name"><span>Обновлена: </span></td>
+                    <td>@Html.DateTimeHm(editForm.UpdatedAt.Value)</td>
+                </tr>
+            }
+            </table>
+        </div>
+    }
+}
+
+<script src="@Url.Content("~/Scripts/ckeditor/ckeditor.js")" type="text/javascript"></script>
+
+<div class="form-box">
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>@ViewBag.Title</legend>
+
+        @Html.ExtValidationSummary()
+        @Html.FlashMessage()
+        
+        @RenderDateRow()
+
+        <div class="form-row">
+            <div class="editor-label">
+                @Html.ExtLabelFor(model => model.Title)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Title)
+                @Html.ValidationMessageFor(model => model.Title)
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="editor-label">
+                @Html.ExtLabelFor(model => model.TagName)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.TagName)
+                @Html.ValidationMessageFor(model => model.TagName)
+            </div>
+        </div>
+
+        <div class="form-row inline-row">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.IsPublished)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.IsPublished)
+                @Html.ValidationMessageFor(model => model.IsPublished)
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="editor-label">
+                @Html.ExtLabelFor(model => model.Content, true)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Content)
+                @Html.ValidationMessageFor(model => model.Content)
+            </div>
+        </div>
+
+        <div class="submit-button">
+            <input type="submit" value="@Model.GetSubmitText()" />
+        </div>
+    </fieldset>
+}
+
+</div>
+
+<script type="text/javascript">
+    CKEDITOR.replace(
+        'Content',
+        { filebrowserImageUploadUrl: '/Image/Upload' }
+    );
+</script>

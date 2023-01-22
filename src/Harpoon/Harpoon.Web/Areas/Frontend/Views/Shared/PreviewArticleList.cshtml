@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Harpoon.Core.Entities.Projections.PreviewArticleInfo>
+
+@foreach (var article in Model)
+{
+    <div class="article-preview-box">
+        @Html.Partial("ArticleHeader", article)
+
+        <div class="article-content">
+            @Html.Raw(article.PreviewContentData)                
+        </div>
+
+        <div class="read-more-link-box cleared-box">
+
+            <table class="tuned-table line-separator-box">
+                <tr>
+                    <td class="left-line">
+                        <div></div>
+                    </td>
+                    <td>
+                        <span class="middle-text-box">
+                            @Html.ActionLink("Читать далее", "Show", "Article", new { key = article.Id }, null)
+                        </span>
+                    </td>
+                    <td class="right-line">
+                        <div></div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+    
+}

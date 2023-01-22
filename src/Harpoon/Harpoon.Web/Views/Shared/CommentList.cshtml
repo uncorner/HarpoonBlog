@@ -1,0 +1,36 @@
+﻿@using Harpoon.Application.ViewModels
+@model Harpoon.Application.ViewModels.ICommentListModel
+
+@helper RenderComments()
+{
+    var commentModel = new CommentModel();
+    
+    foreach (var comment in Model.Comments)
+    {
+        commentModel.Init(comment, Model.IsEditMode, Model.MasterName);
+        @Html.Comment(commentModel)   
+    }
+}
+
+@helper RenderCaption()
+{
+    <div id="comment-list-caption">
+        <span>Комментарии</span>
+        <span id="comment-count">@Model.CommentCount</span>
+
+        @if (Model.IsEditMode)
+        {
+            <span>к заметке &laquo;@Model.ArticleTitle&raquo;</span>            
+        }
+    </div>
+}
+
+<div id="comment-list-external-container">
+    
+    <div id="comment-list-container" class="@Html.VisibleClass(Model.HasComments)">
+        @RenderCaption()            
+        @RenderComments()       
+    </div>
+    
+    <div class="cleared-box"></div>
+</div>

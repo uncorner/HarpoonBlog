@@ -1,0 +1,13 @@
+﻿@model Harpoon.Core.Entities.Projections.ArticleInfo
+
+<div class="article-header">
+    <h1 class="article-title">
+        @Html.ActionLink(Model.Title, "Show", "Article", new { key = Model.Id }, null)
+    </h1>
+    @if (Model.PublishedAt.HasValue)
+    {
+        <div class="article-date middle-gray-color">
+            @Html.DateOnly(Model.PublishedAt.Value)
+        </div>
+    }
+</div>

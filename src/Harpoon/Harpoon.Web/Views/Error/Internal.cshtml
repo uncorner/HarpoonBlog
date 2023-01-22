@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Внутреняя ошибка приложения";
+    Layout = "~/Views/Shared/ErrorLayout.cshtml";
+}
+
+<div id="error-box" class="rounded-border">
+    <table class="tuned-table">
+        <tr>
+            <td id="error-box-image">
+                <img alt="!" src="@Url.Content("~/Content/images/exclamation.png")" />
+            </td>
+            <td id="error-box-message">
+                Произошла внутренняя ошибка приложения.
+                <br /><br />
+                Отчет об ошибке был отправлен администратору и в ближайшее время она будет устранена.
+                <br />
+                Приносим извенения за неудобства.
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td id="error-box-backlink">
+                @Html.RouteLink("Перейти на главную", "Root") 
+            </td>
+        </tr>
+    </table>
+</div>

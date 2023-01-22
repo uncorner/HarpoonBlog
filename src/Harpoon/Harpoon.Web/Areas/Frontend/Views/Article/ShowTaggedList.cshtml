@@ -1,0 +1,17 @@
+﻿@model Harpoon.Application.Frontend.ViewModels.TaggedArticleListForm
+           
+@{
+    ViewBag.Title = Model.TagName;
+}
+
+<div class="article-list-caption">
+    Найденные заметки с тегом «<span>@Model.TagName</span>»:
+</div>
+
+<div id="article-list-container">
+    @foreach (var article in Model.Articles)
+    {
+        @Html.Partial("FoundArticle", article)
+    }
+</div>
+

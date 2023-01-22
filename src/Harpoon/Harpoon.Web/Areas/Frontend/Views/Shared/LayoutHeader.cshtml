@@ -1,0 +1,28 @@
+﻿@model Harpoon.Core.Entities.PersonalSetting
+
+<div id="layout-header-container">
+    <table class="tuned-table" id="layout-header-box" >
+        <tr>
+            <td id="header-avatar-box" rowspan="2">
+                <a href="@Url.RouteUrl("Root")">
+                    <img id="header-avatar" src="@Url.Content("~/Content/images/avatar.png")" alt="Аватар" />
+                </a>
+            </td>
+            <td id="header-text-container" rowspan="2">
+                <div id="header-title">@Model.Title</div>
+                @if (Model.HasSubject())
+                {
+                    <div id="header-subject">@Model.Subject</div>
+                }
+            </td>
+            <td id="rss-container">
+                <a href="@Url.RouteUrl("Rss")" title="Rss feed"></a>
+            </td>
+        </tr>
+        <tr>
+            <td id="keyhole-container">
+                <a href="@Url.RouteUrl("Logon")"></a>
+            </td>
+        </tr>
+    </table>
+</div>

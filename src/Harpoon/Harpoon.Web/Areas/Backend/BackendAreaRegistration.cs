@@ -1,0 +1,20 @@
+﻿using System.Web.Mvc;
+
+namespace Harpoon.Web.Areas.Backend
+{
+    public class BackendAreaRegistration : AreaRegistration
+    {
+        public override string AreaName
+        {
+            get
+            {
+                return "Backend";
+            }
+        }
+
+        public override void RegisterArea(AreaRegistrationContext context)
+        {
+        }
+
+    }
+}

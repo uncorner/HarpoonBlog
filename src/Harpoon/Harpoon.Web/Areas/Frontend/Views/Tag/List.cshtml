@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Harpoon.Core.Entities.Projections.TagInfo>
+@{
+    ViewBag.Title = "Теги";
+}
+
+<div id="tag-cloud-box" class="rounded-border">
+@foreach (var tag in Model)
+{
+    <span>
+        @Html.ActionLink(tag.Name, "ShowTaggedList", "Article", new { key = tag.Id }, null)
+    </span>
+}
+</div>

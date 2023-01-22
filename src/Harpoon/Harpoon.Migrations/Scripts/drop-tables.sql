@@ -1,0 +1,10 @@
+﻿DROP TABLE dbo.VersionInfo;
+DROP TABLE dbo.GuestComments;
+DROP TABLE dbo.Comments;
+DROP TABLE dbo.Chapters;
+DROP TABLE dbo.PersonalSettings;
+DROP TABLE dbo.ArticleTags;
+DROP TABLE dbo.Articles;
+DROP TABLE dbo.Tags;
+DROP TABLE dbo.PostContents;
+DROP TABLE dbo.Images;

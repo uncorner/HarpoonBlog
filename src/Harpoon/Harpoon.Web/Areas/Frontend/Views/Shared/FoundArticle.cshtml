@@ -1,0 +1,45 @@
+﻿@model Harpoon.Application.Frontend.ViewModels.FoundArticle
+
+@helper ArticleUrl() {
+    @Html.Raw("<a href=" + @Url.Action("Show", "Article", new { key = Model.Id }) + ">" + Model.Title + "</a>")
+}
+
+<div class="article-preview-box">
+
+    <div class="article-header">
+        <h1 class="article-title">
+            @ArticleUrl()
+        </h1>
+
+        @if (Model.PublishedAt.HasValue)
+        {
+            <div class="article-date middle-gray-color">
+                @Html.DateOnly(Model.PublishedAt.Value)
+            </div>
+        }
+    </div>
+
+    <div class="article-content">
+        @Html.Raw(Model.Content)
+    </div>
+
+    <div class="read-more-link-box cleared-box">
+        <table class="tuned-table line-separator-box">
+            <tr>
+                <td class="left-line">
+                    <div></div>
+                </td>
+                <td>
+                    <span class="middle-text-box">
+                        @Html.ActionLink("Читать далее", "Show", "Article", new { key = Model.Id }, null)
+                    </span>
+                </td>
+                <td class="right-line">
+                    <div></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
